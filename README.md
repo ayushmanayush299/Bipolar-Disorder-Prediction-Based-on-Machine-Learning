@@ -21,7 +21,8 @@ This project is an end-to-end Machine Learning application designed to predict t
 ##  Tech Stack
 
 * **Programming:** Python
-* **Libraries:** Pandas, NumPy, Scikit-learn
+* **Libraries:** Pandas, NumPy, Scikit-learn ,Matplotlib, Seaborn
+* **Machine Learning:** XGBoost, Random Forest, and Logistic Regression
 * **Framework:** Flask
 * **Frontend:** HTML, CSS
 * **Tools:** Jupyter Notebook
