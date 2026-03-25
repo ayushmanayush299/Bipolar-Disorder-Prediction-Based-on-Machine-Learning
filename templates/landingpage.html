@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bipolar Disorder Prediction</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f9;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
+
+    form {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    section {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        background-color: #fafafa;
+    }
+
+    .section-title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 15px;
+        color: #444;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #007BFF;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        display: block;
+        margin: 0 auto;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    footer {
+        text-align: center;
+        margin-top: 30px;
+        color: #888;
+        font-size: 14px;
+    }
+</style>
+
+<body>
+    <h2>Enter Patient Information</h2>
+    <form action="/predict" method="post" target="result-frame">
+        <label>Name:</label>
+        <input type="text" name="Name" required><br><br>
+
+        <label>Age:</label>
+        <input type="number" name="Age" required><br><br>
+
+        <label>Marital Status:</label>
+        <select name="Marital Status">
+            <option>Single</option>
+            <option>Married</option>
+            <option>Divorced</option>
+            <option>Widowed</option>
+        </select><br><br>
+
+        <label>Education Level:</label>
+        <select name="Education Level">
+            <option>High School</option>
+            <option>Bachelor's Degree</option>
+            <option>Master's Degree</option>
+            <option>Doctorate</option>
+        </select><br><br>
+
+        <label>Number of Children:</label>
+        <input type="number" name="Number of Children" required><br><br>
+
+        <label>Smoking Status:</label>
+        <select name="Smoking Status">
+            <option>Smoker</option>
+            <option>Non-smoker</option>
+        </select><br><br>
+
+        <label>Physical Activity Level:</label>
+        <select name="Physical Activity Level">
+            <option>Sedentary</option>
+            <option>Moderate</option>
+            <option>Active</option>
+        </select><br><br>
+
+        <label>Employment Status:</label>
+        <select name="Employment Status">
+            <option>Employed</option>
+            <option>Unemployed</option>
+        </select><br><br>
+
+        <label>Income:</label>
+        <input type="number" name="Income" step="0.01" required><br><br>
+
+        <label>Alcohol Consumption:</label>
+        <select name="Alcohol Consumption">
+            <option>Low</option>
+            <option>Moderate</option>
+            <option>High</option>
+        </select><br><br>
+
+        <label>Dietary Habits:</label>
+        <select name="Dietary Habits">
+            <option>Healthy</option>
+            <option>Moderate</option>
+            <option>Unhealthy</option>
+        </select><br><br>
+
+        <label>Sleep Patterns:</label>
+        <select name="Sleep Patterns">
+            <option>Good</option>
+            <option>Fair</option>
+            <option>Poor</option>
+        </select><br><br>
+
+        <label>History of Mental Illness:</label>
+        <select name="History of Mental Illness">
+            <option>Yes</option>
+            <option>No</option>
+        </select><br><br>
+
+        <label>History of Substance Abuse:</label>
+        <select name="History of Substance Abuse">
+            <option>Yes</option>
+            <option>No</option>
+        </select><br><br>
+
+        <label>Family History of Depression:</label>
+        <select name="Family History of Depression">
+            <option>Yes</option>
+            <option>No</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <iframe name="result-frame" style="border:none; height:50px;"></iframe>
+
+    <!-- Additions Start Here -->
+
+    <section>
+        <div class="section-title">Risk Score Calculation</div>
+        <button onclick="calculateRiskScore()">Calculate Risk Score</button>
+        <p id="risk-result"></p>
+    </section>
+
+    <section>
+        <div class="section-title">Genetic Risk Estimation</div>
+        <button onclick="calculateGeneticRisk()">Estimate Genetic Risk</button>
+        <p id="genetic-risk-result"></p>
+    </section>
+
+    <section>
+        <div class="section-title">Daily Mood Check-in</div>
+        <label for="mood">Rate Your Mood (1–10):</label>
+        <input type="number" id="mood" min="1" max="10">
+        <button onclick="submitMood()">Submit Mood</button>
+        <p id="mood-response"></p>
+        <img id="mood-graph" src="/mood_progress" alt="Mood Progress Graph" style="margin-top:10px; max-width:100%;">
+    </section>
+
+    <section>
+        <div class="section-title">Mental Health Tips Based on Risk Level</div>
+        <label for="risk-level">Select Risk Level:</label>
+        <select id="risk-level">
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+        </select>
+        <button onclick="getTips()">Get Tips</button>
+        <ul id="tips-list"></ul>
+    </section>
+
+    <script>
+        function getFormData() {
+            const formElements = document.querySelector('form').elements;
+            const formData = {};
+            for (let el of formElements) {
+                if (el.name && el.type !== "submit") {
+                    formData[el.name] = el.value;
+                }
+            }
+            return formData;
+        }
+
+        async function calculateRiskScore() {
+            const data = getFormData();
+            const response = await fetch('/risk_score', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            document.getElementById('risk-result').textContent = "Risk Score: " + result.risk_score;
+        }
+
+        async function calculateGeneticRisk() {
+            const data = getFormData();
+            const response = await fetch('/genetic_risk', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            const result = await response.json();
+            document.getElementById('genetic-risk-result').textContent = "Genetic Risk Score: " + result.genetic_risk_score;
+        }
+
+        async function submitMood() {
+            const mood = document.getElementById('mood').value;
+            const response = await fetch('/mood_checkin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ mood: parseInt(mood) })
+            });
+            const result = await response.json();
+            document.getElementById('mood-response').textContent = result.message;
+            document.getElementById('mood-graph').src = "/mood_progress?" + new Date().getTime();
+        }
+
+        async function getTips() {
+            const level = document.getElementById('risk-level').value;
+            const response = await fetch('/tips', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ risk_level: level })
+            });
+            const result = await response.json();
+            const tipsList = document.getElementById('tips-list');
+            tipsList.innerHTML = '';
+            result.tips.forEach(tip => {
+                const li = document.createElement('li');
+                li.textContent = tip;
+                tipsList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
