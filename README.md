@@ -29,7 +29,7 @@ This project is an end-to-end Machine Learning application designed to predict t
 
 
 ##  Project Structure
-
+'''
 Bipolar-Disorder-Prediction/
 │
 ├── templates/
@@ -47,7 +47,7 @@ Bipolar-Disorder-Prediction/
 ├── app.py
 ├── README.md
 └── .gitignore
-
+'''
 
 
 
@@ -66,13 +66,16 @@ Bipolar-Disorder-Prediction/
 git clone https://github.com/ayushmanayush299/Bipolar-Disorder-Prediction-Based-on-Machine-Learning.git 
 cd Bipolar-Disorder-Prediction-Based-on-Machine-Learning
 
+###  Step 2: Install dependencies
 
-### Step 2: Run the application
+ pip install -r requirements.txt
+
+### Step 3: Run the application
 
 app.py
 
 
-### Step 3: Open in browser
+### Step 4: Open in browser
 
 http://127.0.0.1:5000/
 
