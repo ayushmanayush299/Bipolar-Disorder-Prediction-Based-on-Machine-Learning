@@ -29,7 +29,8 @@ This project is an end-to-end Machine Learning application designed to predict t
 
 
 ##  Project Structure
-'''
+```
+
 Bipolar-Disorder-Prediction/
 │
 ├── templates/
@@ -46,8 +47,7 @@ Bipolar-Disorder-Prediction/
 │
 ├── app.py
 ├── README.md
-└── .gitignore
-'''
+```
 
 
 
