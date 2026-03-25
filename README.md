@@ -46,6 +46,7 @@ Bipolar-Disorder-Prediction/
 │
 ├── app.py
 ├── README.md
+└── .gitignore
 
 
 
