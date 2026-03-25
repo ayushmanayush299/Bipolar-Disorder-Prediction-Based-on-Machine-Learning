@@ -81,6 +81,13 @@ app.py
 http://127.0.0.1:5000/
 
 
+##  Model File
+Due to size limitations, the trained model file is not included in this repository.
+
+🔗 Download the model from Google Drive:  
+[https://your-google-drive-link-here](https://drive.google.com/file/d/1L_1nO2UyOEmXVR9V6GY39AuMO4ul-Qfw/view?usp=drive_link)
+
+
 
 ## Dataset
 
